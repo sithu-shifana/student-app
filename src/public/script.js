@@ -28,14 +28,12 @@ async function addStudent() {
 
   const data = await res.json();
 
-  // 🚨 ERROR HANDLING (CREATE + UPDATE)
   if (!res.ok) {
     alert(data.error);
-    return; // ⛔ STOP here
+    return; 
   }
 
-  // ✅ SUCCESS (CREATE or UPDATE)
-  alert(editId ? "Student updated successfully ✅" : "Student added successfully ✅");
+  alert(editId ? "Student updated successfully " : "Student added successfully ");
 
   editId = null;
   document.getElementById("name").value = "";
@@ -55,13 +53,11 @@ async function deleteStudent(id) {
   const res = await fetch('/students/' + id, { method: "DELETE" });
   const data = await res.json();
 
-  // 🚨 DELETE ERROR
   if (!res.ok) {
     alert(data.error || "Delete failed");
     return;
   }
 
-  // ✅ DELETE SUCCESS
   alert("Student deleted successfully 🗑️");
   load();
 }

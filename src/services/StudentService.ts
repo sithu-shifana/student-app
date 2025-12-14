@@ -4,7 +4,6 @@ import { Student } from "../models/student";
 export class StudentService {
   constructor(private repo: StudentRepository) {}
 
-  // validation stays SAME
   async validate(name: string, email: string) {
     if (!name || name.trim().length < 2)
       throw new Error("Name must be at least 2 characters");

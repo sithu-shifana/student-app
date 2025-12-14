@@ -9,14 +9,13 @@ import { StudentController } from "./controllers/StudentController";
 
 const app = express();
 app.use(cors());
-app.use(bodyParser.json());//read json from request body
+app.use(bodyParser.json());
 
-// serve UI
 app.use(express.static(path.join(__dirname, "public")));
 
-const repo = new StudentRepository();//talk to db
-const service = new StudentService(repo);//validation
-const controller = new StudentController(service);//recieve and send http request
+const repo = new StudentRepository();
+const service = new StudentService(repo);
+const controller = new StudentController(service);
 
 app.post("/students", (req, res) => controller.create(req, res));
 app.get("/students", (req, res) => controller.list(req, res));
